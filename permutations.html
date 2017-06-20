@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Permutations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 1em
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Permutation</h1>
+    <pre id="result">Processing</pre>
+    <script>
+    function permute(input) {
+        console.log("Work in progress:", totalPermutations);
+        // in case input is empty, we skip this
+        // for loop and we return totalPermutations
+        // directly
+        for (var i = 0; i < input.length; i++) {
+            // firstItem containt the first item
+            // from input. The item is also removed
+            // from the array "input"
+            var firstItem = input.splice(i, 1)[0];
+            // first item is added temporarly to
+            // the temp array
+            temp.push(firstItem);
+            // if the input is now empty we actually
+            // finished to create a permutation and
+            // we store it in totalPermutations
+            if (input.length === 0) {
+                totalPermutations.push(temp.slice());
+            }
+            // We call recursively permute                
+            permute(input);
+            // after we add the firstItem back in place
+            // and we remove it from the temporary
+            // array
+            input.splice(i, 0, firstItem);
+            temp.pop();
+        }
+        return totalPermutations;
+    }
+    var totalPermutations = [];
+    var temp = [];
+    document.getElementById("result").innerHTML = JSON.stringify(permute([1, 2, 3]));
+    </script>
+</body>
+
+</html>

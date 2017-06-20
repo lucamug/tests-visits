@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Permutations with Heap's method</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 1em
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Permutations with Heap's method</h1>
+    <pre id="result">Processing</pre>
+    <script>
+    function permutate_le_m(permutation) {
+        var length = permutation.length,
+            result = new Array([0, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600][length]),
+            c = new Array(length).fill(0),
+            i = 1,
+            j = 1;
+
+        result[0] = permutation.slice();
+        while (i < length) {
+            if (c[i] < i) {
+                var k = (i % 2) ? c[i] : 0,
+                    p = permutation[i];
+                permutation[i] = permutation[k];
+                permutation[k] = p;
+                ++c[i];
+                i = 1;
+                result[j] = permutation.slice();
+                ++j;
+            } else {
+                c[i] = 0;
+                ++i;
+            }
+        }
+        return result;
+    }
+    var array = [1, 2, 3];
+    var result = permutate_le_m(array);
+    document.getElementById("result").innerHTML = JSON.stringify(result);
+    </script>
+</body>
+
+</html>

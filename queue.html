@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Queue - First-In First-Out (FIFO) paradigm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin: 1em
+    }
+    </style>
+    <!-- Source https://stackoverflow.com/questions/9960908/permutations-in-javascript/37580979#37580979 -->
+</head>
+
+<body>
+    <h1>Queue - First-In First-Out (FIFO) paradigm</h1>
+    <h2>Script</h2>
+    <pre>
+function queue () {
+    var queue = [];
+    this.enqueue = function (value) {
+      queue.push(value);
+      return queue;
+    };
+    this.dequeue = function () {
+      return queue.shift();
+    }
+    return this;
+};
+var q = queue();
+document.getElementById("result").innerHTML += JSON.stringify(q.enqueue("ciao")) + "\n";
+document.getElementById("result").innerHTML += JSON.stringify(q.enqueue("konnichiwa")) + "\n";
+document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+  </pre>
+    <h2>Output</h2>
+    <pre id="result"></pre>
+    <script>
+    function queue() {
+        var queue = [];
+        this.enqueue = function(value) {
+            queue.push(value);
+            return queue;
+        };
+        this.dequeue = function() {
+            return queue.shift();
+        };
+        return this;
+    }
+    var q = queue();
+    document.getElementById("result").innerHTML += JSON.stringify(q.enqueue("ciao")) + "\n";
+    document.getElementById("result").innerHTML += JSON.stringify(q.enqueue("konnichiwa")) + "\n";
+    document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+    document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+    document.getElementById("result").innerHTML += JSON.stringify(q.dequeue()) + "\n";
+    </script>
+</body>
+
+</html>
